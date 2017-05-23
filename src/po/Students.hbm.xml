@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="po.Students" table="students" schema="hibernate" >
+        <!--<cache usage="read-only" include="non-lazy" />-->
+
+        <id name="sid">
+            <column name="SID" sql-type="int(11)"/>
+            <generator class="native" />
+        </id>
+        <property name="sname">
+            <column name="SNAME" sql-type="varchar(30)" length="100"/>
+        </property>
+        <property name="gender">
+            <column name="GENDER" sql-type="varchar(30)" length="100"/>
+        </property>
+        <property name="birthday" type="date">
+            <column name="BIRTHDAY" />
+        </property>
+        <component name="address" class="po.Address">
+            <property name="postcode" column="POSTCODE"></property>
+            <property name="phone" column="PHONE"></property>
+            <property name="address" column="ADDRESS"></property>
+        </component>
+    </class>
+</hibernate-mapping>
